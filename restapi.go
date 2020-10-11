@@ -1680,6 +1680,42 @@ CHANNEL_LOOP:
 	return requestError
 }
 
+// BulkChannelMessageAck acknowledges the message in all given channels. This
+// is useful for acknowleding categories for example.
+func (s *Session) BulkChannelMessageAck(channels []*Channel) error {
+	var acks []*bulkAckEntry
+CHANNEL_LOOP:
+	for _, channel := range channels {
+		for _, readState := range s.State.Ready.ReadState {
+			//We avoid sending unnecessary acks when we are sure we've
+			//already read a channel.
+			if readState.ID == channel.ID {
+				if readState.LastMessageID == channel.LastMessageID {
+					continue CHANNEL_LOOP
+				}
+
+				//If the readstat is outdated, then we add an entry to the array.
+				break
+			}
+		}
+
+		if channel.LastMessageID != "" {
+			acks = append(acks, &bulkAckEntry{
+				ChannelID: channel.ID,
+				MessageID: channel.LastMessageID,
+			})
+		}
+	}
+
+	// Nothing to tell the server
+	if len(acks) == 0 {
+		return nil
+	}
+
+	_, requestError := s.Request("POST", EndpointReadStatesAckBulk, &bulkAck{acks})
+	return requestError
+}
+
 // ChannelMessageSend sends a message to the given channel.
 // channelID : The ID of a Channel.
 // content   : The message to send.
