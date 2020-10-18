@@ -888,19 +888,28 @@ const (
 
 // A UserGuildSettingsChannelOverride stores data for a channel override for a users guild settings.
 type UserGuildSettingsChannelOverride struct {
-	Muted                bool   `json:"muted"`
-	MessageNotifications int    `json:"message_notifications"`
-	ChannelID            string `json:"channel_id"`
+	Muted                bool        `json:"muted"`
+	MuteConfig           *MuteConfig `json:"mute_config"`
+	MessageNotifications int         `json:"message_notifications"`
+	ChannelID            string      `json:"channel_id"`
 }
 
 // A UserGuildSettings stores data for a users guild settings.
 type UserGuildSettings struct {
 	SupressEveryone      bool                                `json:"suppress_everyone"`
 	Muted                bool                                `json:"muted"`
+	MuteConfig           *MuteConfig                         `json:"mute_config"`
 	MobilePush           bool                                `json:"mobile_push"`
 	MessageNotifications int                                 `json:"message_notifications"`
 	GuildID              interface{}                         `json:"guild_id"`
 	ChannelOverrides     []*UserGuildSettingsChannelOverride `json:"channel_overrides"`
+}
+
+// MuteConfig is used for specifying the time window in which a guild or
+// channel is muted.
+type MuteConfig struct {
+	EndTime            Timestamp `json:"end_time"`
+	SelectedTimeWindow int       `json:"selected_time_window"`
 }
 
 // GetGuildID is a workaround for when the Discord API send an integer instead
