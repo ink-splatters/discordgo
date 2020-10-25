@@ -1,7 +1,11 @@
 # Non-TOS compliant fork of Discordgo
 
-This fork allows usage of normal discord accounts. The support sin't really
+This fork allows usage of normal discord accounts. The support isn't really
 proper and API versions might differ from endpoint to endpoint.
 
-Examples are probably out of date, but it's fine by me, this is mostly for
-personal use. However, feel free to do with it what you will.
+Both examples and documentation have been deleted, simply because I am to
+lazy to keep them updated.
+
+Fixes from the official library might be merged over from time to time, but no
+changes go the other way, as discordgo didn't want to accept changes regarding
+normal user accounts in the past.
