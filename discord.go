@@ -28,7 +28,7 @@ const VERSION = "0.21.1"
 // ErrMFA will be risen by New when the user has 2FA.
 var ErrMFA = errors.New("account has 2FA enabled")
 
-const fakeBrowserUserAgent = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0"
+const fakeBrowserUserAgent = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:82.0) Gecko/20100101 Firefox/82.0"
 const botUserAgent = "Discord Bot (Bios-Marcel/discordgo)"
 
 // NewWithToken creates a new Discord session and will use the given token
