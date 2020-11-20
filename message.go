@@ -43,6 +43,9 @@ type Message struct {
 	// The ID of the channel in which the message was sent.
 	ChannelID string `json:"channel_id"`
 
+	// ReferenceMessage is a message that this message was written in reply to.
+	ReferencedMessage *Message `json:"referenced_message"`
+
 	// The ID of the guild in which the message was sent.
 	GuildID string `json:"guild_id,omitempty"`
 
