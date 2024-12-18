@@ -1,8 +1,10 @@
 module github.com/ink-splatters/discordgo
 
-go 1.12
+go 1.23.3
 
 require (
-	github.com/gorilla/websocket v1.4.2
-	golang.org/x/crypto v0.0.0-20201016220609-9e8e0b390897
+	github.com/gorilla/websocket v1.5.3
+	golang.org/x/crypto v0.31.0
 )
+
+require golang.org/x/sys v0.28.0 // indirect
