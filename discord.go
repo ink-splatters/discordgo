@@ -1,5 +1,5 @@
 // Discordgo - Discord bindings for Go
-// Available at https://github.com/Bios-Marcel/discordgo
+// Available at https://github.com/ink-splatters/discordgo
 
 // Copyright 2015-2016 Bruce Marriner <bruce@sqls.net>.  All rights reserved.
 // Use of this source code is governed by a BSD-style
@@ -26,7 +26,7 @@ import (
 var ErrMFA = errors.New("account has 2FA enabled")
 
 const fakeBrowserUserAgent = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:82.0) Gecko/20100101 Firefox/82.0"
-const botUserAgent = "Discord Bot (Bios-Marcel/discordgo)"
+const botUserAgent = "Discord Bot (ink-splatters/discordgo)"
 
 // NewWithToken creates a new Discord session and will use the given token
 // for authorization.
